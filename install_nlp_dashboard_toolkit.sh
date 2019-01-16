@@ -7,7 +7,7 @@
 
 ############################################### STAP 01
 echo "Update Package.."
-apt-get update -y && apt-get upgrade -y && apt-get clean -y
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get clean -y
 
 
 
@@ -15,13 +15,13 @@ apt-get update -y && apt-get upgrade -y && apt-get clean -y
 echo "Install Dependencies.."
 
 echo "Install Lang"
-apt-get install language-pack-ru-base -y && locale-gen en_US en_US.UTF-8
+sudo apt-get install language-pack-ru-base -y && locale-gen en_US en_US.UTF-8
 
 echo "Install Java 8"
-apt-get install -y  software-properties-common && add-apt-repository ppa:webupd8team/java -y && apt-get update && echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && apt-get install -y oracle-java8-installer && apt-get clean -y
+sudo apt-get install -y  software-properties-common && add-apt-repository ppa:webupd8team/java -y && sudo apt-get update && echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && sudo apt-get install -y oracle-java8-installer && sudo apt-get clean -y
 
 echo "Install Unzip.."
-apt-get install unzip -y && apt-get clean -y
+sudo apt-get install unzip -y && sudo apt-get clean -y
 
 echo "Install pip"
 apt install python-pip -y
@@ -39,7 +39,7 @@ mkdir -p ~/tool-nlp
 
 ############################################### STAP
 echo "Install Dependencies FreeLing.."
-apt-get install build-essential -y && apt-get install cmake -y && apt-get install swig -y && apt-get install libboost-all-dev -y && apt-get install libicu-dev -y && apt-get install zlib1g-dev -y && apt-get clean -y
+sudo apt-get install build-essential -y && sudo apt-get install cmake -y && sudo apt-get install swig -y && sudo apt-get install libboost-all-dev -y && sudo apt-get install libicu-dev -y && sudo apt-get install zlib1g-dev -y && sudo apt-get clean -y
 
 cd tool-nlp
 
@@ -51,6 +51,7 @@ tar -vzxf FreeLing-4.1.tar.gz
 
 echo "Install FreeLing.."
 cd FreeLing-4.1 && mkdir build && cd build && cmake .. -DPYTHON2_API=ON && make -j 4 install
+cd ~ && rm FreeLing-4.1.tar.gz
 
 
 ############################################### STAP
@@ -84,7 +85,7 @@ pip install spacy && python -m spacy download en && pip install pathlib && pip i
 
 ############################################### STAP
 echo "Clean Install.."
-apt-get update -y && apt-get upgrade -y && apt-get clean -y
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get clean -y
 
 
 
