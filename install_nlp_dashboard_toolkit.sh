@@ -15,19 +15,22 @@ sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get clean -y
 echo "Install Dependencies.."
 
 echo "Install Lang"
-sudo apt-get install language-pack-ru-base -y && locale-gen en_US en_US.UTF-8
+sudo apt-get install language-pack-ru-base -y && sudo locale-gen en_US en_US.UTF-8
 
 echo "Install Java 8"
-sudo apt-get install -y  software-properties-common && add-apt-repository ppa:webupd8team/java -y && sudo apt-get update && echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && sudo apt-get install -y oracle-java8-installer && sudo apt-get clean -y
+
+sudo apt-get install software-properties-common && sudo add-apt-repository ppa:webupd8team/java -y && sudo apt-get update && sudo su && echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && exit && sudo apt-get install -y oracle-java8-installer
+
+
 
 echo "Install Unzip.."
-sudo apt-get install unzip -y && sudo apt-get clean -y
+sudo apt-get install unzip -y
 
 echo "Install pip"
-apt install python-pip -y
+sudo apt install python-pip -y
 
 echo "Install Git"
-apt install git -y
+sudo apt install git -y
 
 
 
@@ -39,7 +42,7 @@ mkdir -p ~/tool-nlp
 
 ############################################### STAP
 echo "Install Dependencies FreeLing.."
-sudo apt-get install build-essential -y && sudo apt-get install cmake -y && sudo apt-get install swig -y && sudo apt-get install libboost-all-dev -y && sudo apt-get install libicu-dev -y && sudo apt-get install zlib1g-dev -y && sudo apt-get clean -y
+sudo apt-get install build-essential -y && sudo apt-get install cmake -y && sudo apt-get install swig -y && sudo apt-get install libboost-all-dev -y && sudo apt-get install libicu-dev -y && sudo apt-get install zlib1g-dev -y
 
 cd tool-nlp
 
@@ -48,10 +51,11 @@ wget https://github.com/TALP-UPC/FreeLing/releases/download/4.1/FreeLing-4.1.tar
 
 echo "Uncompressed file FreeLing.."
 tar -vzxf FreeLing-4.1.tar.gz
+rm -r FreeLing-4.1.tar.gz
 
 echo "Install FreeLing.."
-cd FreeLing-4.1 && mkdir build && cd build && cmake .. -DPYTHON2_API=ON && make -j 4 install
-cd ~ && rm FreeLing-4.1.tar.gz
+cd FreeLing-4.1 && mkdir build && cd build && cmake .. -DPYTHON2_API=ON && sudo make -j 4 install
+
 
 
 ############################################### STAP
@@ -105,5 +109,3 @@ echo "Run WebServer"
 cd dash-nlp
 python run_server.py
 echo "http://127.0.0.1:5000"
-
-
