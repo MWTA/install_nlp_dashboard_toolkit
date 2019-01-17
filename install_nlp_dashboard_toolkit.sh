@@ -60,7 +60,7 @@ cd FreeLing-4.1 && mkdir build && cd build && cmake .. -DPYTHON2_API=ON && sudo 
 
 ############################################### STAP
 echo "Download Stanford CoreNLP.."
-cd ~ && cd tool-nlp && wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip && \
+cd ~ && cd tool-nlp && wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip 
 
 echo "Uncompressed file Stanford CoreNLP.."
 unzip stanford-corenlp-full-2018-10-05.zip
@@ -77,7 +77,7 @@ unzip master && mv semafor-master semafor
 echo "Config SEMAFOR.."
 cd semafor/bin
 echo '#!/bin/sh\
-        export BASE_DIR="/home/tool-nlp" export SEMAFOR_HOME="${BASE_DIR}/semafor" export CLASSPATH=".:${SEMAFOR_HOME}/target/Semafor-3.0-alpha-04.jar" export JAVA_HOME_BIN="/usr/lib/jvm/java-8-oracle/bin" export TURBO_MODEL_DIR="{BASE_DIR}/semafor/models/turbo_20130606" echo "Environment variables:" echo "SEMAFOR_HOME=${SEMAFOR_HOME}" echo "CLASSPATH=${CLASSPATH}" echo "JAVA_HOME_BIN=${JAVA_HOME_BIN}" echo "MALT_MODEL_DIR=${MALT_MODEL_DIR}" ' >> config.sh
+        export BASE_DIR="/home/tool-nlp" export SEMAFOR_HOME="${BASE_DIR}/semafor" export CLASSPATH=".:${SEMAFOR_HOME}/target/Semafor-3.0-alpha-04.jar" export JAVA_HOME_BIN="/usr/lib/jvm/java-8-openjdk-amd64/bin" export TURBO_MODEL_DIR="{BASE_DIR}/semafor/models/turbo_20130606" echo "Environment variables:" echo "SEMAFOR_HOME=${SEMAFOR_HOME}" echo "CLASSPATH=${CLASSPATH}" echo "JAVA_HOME_BIN=${JAVA_HOME_BIN}" echo "MALT_MODEL_DIR=${MALT_MODEL_DIR}" ' >> config.sh
 
 
 
@@ -107,5 +107,6 @@ echo "Install Completed!"
 ############################################### STAP
 echo "Run WebServer"
 cd dash-nlp
-python run_server.py
 echo "http://127.0.0.1:5000"
+echo "Strop Ctrl+c"
+python run_server.py
