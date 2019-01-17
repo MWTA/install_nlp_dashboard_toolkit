@@ -19,6 +19,10 @@ sudo apt-get install language-pack-ru-base -y && sudo locale-gen en_US en_US.UTF
 
 echo "Install Java 8"
 
+# Deepin
+apt-cache search openjdk && sudo apt-get install openjdk-8-jre openjdk-8-jdk && java -version && echo "JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/environment && source /etc/environment && echo $JAVA_HOME
+
+# Docker
 sudo apt-get install software-properties-common && sudo add-apt-repository ppa:webupd8team/java -y && sudo apt-get update && sudo su && echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && exit && sudo apt-get install -y oracle-java8-installer
 
 
