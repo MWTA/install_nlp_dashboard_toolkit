@@ -73,7 +73,7 @@ rm -r stanford-corenlp-full-2018-10-05.zip
 
 
 ############################################### STAP
-echo "Download SEMAFOR.."
+echo "Download and Install Dependecies SEMAFOR.."
 wget https://github.com/Noahs-ARK/semafor/archive/master.zip
 
 echo "Uncompressed SEMAFOR.."
@@ -86,6 +86,12 @@ echo '#!/bin/sh\
 
 echo "Download Models SEMAFOR.."
 cd .. && mkdir -p models && wget http://www.ark.cs.cmu.edu/SEMAFOR/semafor_malt_model_20121129.tar.gz && tar -vzxf semafor_malt_model_20121129.tar.gz && rm -r semafor_malt_model_20121129.tar.gz 
+
+echo "install Maven.."
+sudo apt install maven -y && mvn -version
+
+echo "SEMAFOR Create Packege Maven.."
+mvn package
 
 
 
