@@ -68,6 +68,7 @@ cd ~ && cd tool-nlp && wget http://nlp.stanford.edu/software/stanford-corenlp-fu
 
 echo "Uncompressed file Stanford CoreNLP.."
 unzip stanford-corenlp-full-2018-10-05.zip
+rm -r stanford-corenlp-full-2018-10-05.zip
 
 
 
@@ -83,10 +84,14 @@ cd semafor/bin
 echo '#!/bin/sh\
         export BASE_DIR="/home/tool-nlp" export SEMAFOR_HOME="${BASE_DIR}/semafor" export CLASSPATH=".:${SEMAFOR_HOME}/target/Semafor-3.0-alpha-04.jar" export JAVA_HOME_BIN="/usr/lib/jvm/java-8-openjdk-amd64/bin" export TURBO_MODEL_DIR="{BASE_DIR}/semafor/models/turbo_20130606" echo "Environment variables:" echo "SEMAFOR_HOME=${SEMAFOR_HOME}" echo "CLASSPATH=${CLASSPATH}" echo "JAVA_HOME_BIN=${JAVA_HOME_BIN}" echo "MALT_MODEL_DIR=${MALT_MODEL_DIR}" ' >> config.sh
 
+echo "Download Models SEMAFOR.."
+cd .. && mkdir -p models && wget http://www.ark.cs.cmu.edu/SEMAFOR/semafor_malt_model_20121129.tar.gz && tar -vzxf semafor_malt_model_20121129.tar.gz && rm -r semafor_malt_model_20121129.tar.gz 
+
 
 
 ############################################### STAP
 echo "Install Dependencies Python Project Requirements.."
+cd ~
 pip install spacy && python -m spacy download en && pip install pathlib && pip install xmlformatter && pip install flask_socketio && pip install nltk && python -c "import nltk; nltk.download('all')" && pip install stanfordcorenlp && pip install spacy && pip install supwsd
 
 
